@@ -1,0 +1,41 @@
+name: infinitic-example-kotlin
+mode: worker
+stateStorage: redis
+
+redis:
+  host: localhost
+  port: 6379
+  user:
+  password:
+  database: 0
+
+pulsar:
+  serviceUrl: pulsar://localhost:6650
+  serviceHttpUrl: http://localhost:8080
+  tenant: infinitic
+  namespace: dev
+
+taskEngine:
+  consumers: 10
+
+workflowEngine:
+  consumers: 10
+
+monitoring:
+  consumers: 10
+
+tasks:
+  - name: infinitic.examples.kotlin.booking.tasks.carRental.CarRentalService
+    class: infinitic.examples.kotlin.booking.tasks.carRental.CarRentalServiceFake
+    concurrency: 5
+  - name: infinitic.examples.kotlin.booking.tasks.flight.FlightService
+    class: infinitic.examples.kotlin.booking.tasks.flight.FlightServiceFake
+    concurrency: 5
+  - name: infinitic.examples.kotlin.booking.tasks.hotel.HotelService
+    class: infinitic.examples.kotlin.booking.tasks.hotel.HotelServiceFake
+    concurrency: 5
+
+workflows:
+  - name: infinitic.examples.kotlin.booking.workflows.BookingService
+    class: infinitic.examples.kotlin.booking.workflows.BookingServiceImpl
+    concurrency: 5
