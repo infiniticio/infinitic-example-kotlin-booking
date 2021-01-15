@@ -15,10 +15,10 @@ repositories {
 }
 
 dependencies {
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.*")
-    implementation("org.slf4j:slf4j-simple:1.7.*")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.+")
+    implementation("org.slf4j:slf4j-simple:1.7.+")
     // https://github.com/apache/pulsar/issues/9045
-    implementation("org.apache.avro:avro") { version { strictly("1.9.*") } }
+    implementation("org.apache.avro:avro") { version { strictly("1.9.+") } }
 
     implementation("io.infinitic:infinitic-pulsar:0.0.3-SNAPSHOT")
     implementation("io.infinitic:infinitic-client:0.0.3-SNAPSHOT")
@@ -26,9 +26,21 @@ dependencies {
 
 application {
     // Define the main class for the application.
-    mainClassName = "infinitic.example.kotlin.WorkerKt"
+    mainClassName = "infinitic.example.kotlin.booking.WorkerKt"
 }
 
 tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = JavaVersion.VERSION_1_8.toString()
+}
+
+task("setup", JavaExec::class) {
+    group = "infinitic"
+    main = "infinitic.example.kotlin.booking.AdminKt"
+    classpath = sourceSets["main"].runtimeClasspath
+}
+
+task("start", JavaExec::class) {
+    group = "infinitic"
+    main = "infinitic.example.kotlin.booking.ClientKt"
+    classpath = sourceSets["main"].runtimeClasspath
 }

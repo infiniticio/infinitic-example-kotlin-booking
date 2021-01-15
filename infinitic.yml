@@ -25,17 +25,17 @@ monitoring:
   consumers: 10
 
 tasks:
-  - name: infinitic.examples.kotlin.booking.tasks.carRental.CarRentalService
-    class: infinitic.examples.kotlin.booking.tasks.carRental.CarRentalServiceFake
+  - name: infinitic.example.kotlin.booking.tasks.carRental.CarRentalService
+    class: infinitic.example.kotlin.booking.tasks.carRental.CarRentalServiceFake
     concurrency: 5
-  - name: infinitic.examples.kotlin.booking.tasks.flight.FlightService
-    class: infinitic.examples.kotlin.booking.tasks.flight.FlightServiceFake
+  - name: infinitic.example.kotlin.booking.tasks.flight.FlightService
+    class: infinitic.example.kotlin.booking.tasks.flight.FlightServiceFake
     concurrency: 5
-  - name: infinitic.examples.kotlin.booking.tasks.hotel.HotelService
-    class: infinitic.examples.kotlin.booking.tasks.hotel.HotelServiceFake
+  - name: infinitic.example.kotlin.booking.tasks.hotel.HotelService
+    class: infinitic.example.kotlin.booking.tasks.hotel.HotelServiceFake
     concurrency: 5
 
 workflows:
-  - name: infinitic.examples.kotlin.booking.workflows.BookingService
-    class: infinitic.examples.kotlin.booking.workflows.BookingServiceImpl
+  - name: infinitic.example.kotlin.booking.workflows.BookingService
+    class: infinitic.example.kotlin.booking.workflows.BookingServiceImpl
     concurrency: 5
