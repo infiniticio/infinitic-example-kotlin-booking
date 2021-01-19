@@ -9,9 +9,9 @@ plugins {
 
 repositories {
     mavenLocal()
+    maven(url = "http://oss.sonatype.org/content/repositories/snapshots")
     mavenCentral()
     jcenter()
-    maven(url = "https://dl.bintray.com/kodein-framework/Kodein-DB")
 }
 
 dependencies {
@@ -33,13 +33,13 @@ tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = JavaVersion.VERSION_1_8.toString()
 }
 
-task("setup", JavaExec::class) {
+task("setupPulsar", JavaExec::class) {
     group = "infinitic"
     main = "infinitic.example.kotlin.booking.AdminKt"
     classpath = sourceSets["main"].runtimeClasspath
 }
 
-task("start", JavaExec::class) {
+task("startWorkflow", JavaExec::class) {
     group = "infinitic"
     main = "infinitic.example.kotlin.booking.ClientKt"
     classpath = sourceSets["main"].runtimeClasspath

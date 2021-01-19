@@ -1,0 +1,6 @@
+name: flightService
+
+tasks:
+  - name: infinitic.example.kotlin.booking.tasks.flight.FlightBookingService
+    class: infinitic.example.kotlin.booking.tasks.flight.FlightBookingServiceFake
+    concurrency: 5

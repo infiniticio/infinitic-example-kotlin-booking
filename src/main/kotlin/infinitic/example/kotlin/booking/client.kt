@@ -1,24 +1,27 @@
 package infinitic.example.kotlin.booking
 
 import infinitic.example.kotlin.booking.tasks.carRental.CarRentalCart
-import infinitic.example.kotlin.booking.tasks.flight.FlightCart
-import infinitic.example.kotlin.booking.tasks.hotel.HotelCart
-import infinitic.example.kotlin.booking.workflows.BookingService
+import infinitic.example.kotlin.booking.tasks.flight.FlightBookingCart
+import infinitic.example.kotlin.booking.tasks.hotel.HotelBookingCart
+import infinitic.example.kotlin.booking.workflows.BookingWorkflow
 import io.infinitic.pulsar.InfiniticClient
 import kotlinx.coroutines.runBlocking
 import java.util.UUID
 
 fun main() = runBlocking {
+
     // instantiate Infinitic client based on infinitic.yml config file
-    val client = InfiniticClient.fromFile("infinitic.yml")
+    val client = InfiniticClient.fromFile("configs/infinitic.yml")
 
-    // faking some carts
-    val carRentalCart = CarRentalCart(getId())
-    val flightCart = FlightCart(getId())
-    val hotelCart = HotelCart(getId())
+    repeat(1) {
+        // faking some carts
+        val carRentalCart = CarRentalCart(getId())
+        val flightCart = FlightBookingCart(getId())
+        val hotelCart = HotelBookingCart(getId())
 
-    // starting a workflow
-    client.startWorkflow<BookingService> { book(carRentalCart, flightCart, hotelCart) }
+        // starting a workflow
+        client.startWorkflow<BookingWorkflow> { book(carRentalCart, flightCart, hotelCart) }
+    }
 
     // closing underlying PulsarClient
     client.close()

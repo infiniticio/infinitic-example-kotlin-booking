@@ -1,25 +1,36 @@
 package infinitic.example.kotlin.booking.tasks.carRental
 
+import java.lang.RuntimeException
 import kotlin.random.Random
 
 class CarRentalServiceFake : CarRentalService {
     override fun book(cart: CarRentalCart): CarRentalResult {
         // fake emulation of success/failure
-        val r = Random.nextInt(0, 100)
+        println("${this::class.simpleName}     (${cart.cartId}): booking ...")
+
+        val r = Random.nextLong(0, 5000)
+        Thread.sleep(r)
 
         return when {
-            r >= 80 -> {
-                println("${this::class.simpleName}: failed to book cart $cart")
+            r >= 4000 -> {
+                println("${this::class.simpleName}     (${cart.cartId}): failed")
                 CarRentalResult.FAILURE
             }
+//             uncomment lines below to test task retries
+//            r >= 3000 -> {
+//                println("${this::class.simpleName}     (${cart.cartId}): exception! (retry in ${getRetryDelay()}s)")
+//                throw RuntimeException("failing request")
+//            }
             else -> {
-                println("${this::class.simpleName}: cart $cart booked successfully")
+                println("${this::class.simpleName}     (${cart.cartId}): succeeded")
                 CarRentalResult.SUCCESS
             }
         }
     }
 
     override fun cancel(cart: CarRentalCart) {
-        println("${this::class.simpleName}: canceling cart $cart")
+        println("${this::class.simpleName}     (${cart.cartId}): canceled")
     }
+
+    fun getRetryDelay() = 5F
 }

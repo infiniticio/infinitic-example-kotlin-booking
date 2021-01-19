@@ -5,15 +5,15 @@ import infinitic.example.kotlin.booking.tasks.flight.*
 import infinitic.example.kotlin.booking.tasks.hotel.*
 import io.infinitic.workflows.*
 
-class BookingServiceImpl : WorkflowBase(), BookingService {
+class BookingWorkflowImpl : AbstractWorkflow(), BookingWorkflow {
     private val carRentalService = task<CarRentalService>()
-    private val flightService = task<FlightService>()
-    private val hotelService = task<HotelService>()
+    private val flightService = task<FlightBookingService>()
+    private val hotelService = task<HotelBookingService>()
 
     override fun book(
         carRentalCart: CarRentalCart,
-        flightCart: FlightCart,
-        hotelCart: HotelCart
+        flightCart: FlightBookingCart,
+        hotelCart: HotelBookingCart
     ): BookingResult {
         // parallel bookings using car rental, flight and hotel services
         val carRental = async(carRentalService) { book(carRentalCart) }
@@ -27,19 +27,19 @@ class BookingServiceImpl : WorkflowBase(), BookingService {
 
         // if at least one of the booking is failed than cancel all successful bookings
         if (carRentalResult == CarRentalResult.FAILURE ||
-            flightResult == FlightResult.FAILURE ||
-            hotelResult == HotelResult.FAILURE
+            flightResult == FlightBookingResult.FAILURE ||
+            hotelResult == HotelBookingResult.FAILURE
         ) {
             if (carRentalResult == CarRentalResult.SUCCESS) { carRentalService.cancel(carRentalCart) }
-            if (flightResult == FlightResult.SUCCESS) { flightService.cancel(flightCart) }
-            if (hotelResult == HotelResult.SUCCESS) { hotelService.cancel(hotelCart) }
+            if (flightResult == FlightBookingResult.SUCCESS) { flightService.cancel(flightCart) }
+            if (hotelResult == HotelBookingResult.SUCCESS) { hotelService.cancel(hotelCart) }
 
-            inline { println("${this::class.simpleName}: booking failed") }
+            inline { println("${this::class.simpleName}: book canceled") }
             return BookingResult.FAILURE
         }
 
         // everything went fine
-        inline { println("${this::class.simpleName}: booking succeeded") }
+        inline { println("${this::class.simpleName}: book succeeded") }
         return BookingResult.SUCCESS
     }
 }

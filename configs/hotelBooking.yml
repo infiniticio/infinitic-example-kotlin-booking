@@ -1,0 +1,7 @@
+name: hotelService
+
+tasks:
+  - name: infinitic.example.kotlin.booking.tasks.hotel.HotelBookingService
+    class: infinitic.example.kotlin.booking.tasks.hotel.HotelBookingServiceFake
+    concurrency: 5
+
