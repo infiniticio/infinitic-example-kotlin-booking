@@ -1,5 +1,3 @@
-name: carRentalService
-
 tasks:
   - name: infinitic.example.kotlin.booking.tasks.carRental.CarRentalService
     class: infinitic.example.kotlin.booking.tasks.carRental.CarRentalServiceFake

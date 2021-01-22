@@ -1,5 +1,3 @@
-name: infinitic-example-kotlin-booking
-
 taskEngine:
   consumers: 10
 

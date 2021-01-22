@@ -2,13 +2,11 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     id("org.jetbrains.kotlin.jvm") version "1.4.21"
-    kotlin("plugin.serialization").version("1.4.10")
 
     application
 }
 
 repositories {
-    mavenLocal()
     maven(url = "http://oss.sonatype.org/content/repositories/snapshots")
     mavenCentral()
     jcenter()
@@ -17,11 +15,9 @@ repositories {
 dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.+")
     implementation("org.slf4j:slf4j-simple:1.7.+")
-    // https://github.com/apache/pulsar/issues/9045
-    implementation("org.apache.avro:avro") { version { strictly("1.9.+") } }
 
-    implementation("io.infinitic:infinitic-pulsar:0.0.3-SNAPSHOT")
-    implementation("io.infinitic:infinitic-client:0.0.3-SNAPSHOT")
+    implementation("io.infinitic:infinitic-pulsar:0.1.0-SNAPSHOT")
+    implementation("io.infinitic:infinitic-client:0.1.0-SNAPSHOT")
 }
 
 application {

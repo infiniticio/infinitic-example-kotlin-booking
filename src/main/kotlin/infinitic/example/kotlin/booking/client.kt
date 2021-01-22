@@ -13,15 +13,13 @@ fun main() = runBlocking {
     // instantiate Infinitic client based on infinitic.yml config file
     val client = InfiniticClient.fromFile("configs/infinitic.yml")
 
-    repeat(1) {
-        // faking some carts
-        val carRentalCart = CarRentalCart(getId())
-        val flightCart = FlightBookingCart(getId())
-        val hotelCart = HotelBookingCart(getId())
+    // faking some carts
+    val carRentalCart = CarRentalCart(getId())
+    val flightCart = FlightBookingCart(getId())
+    val hotelCart = HotelBookingCart(getId())
 
-        // starting a workflow
-        client.startWorkflow<BookingWorkflow> { book(carRentalCart, flightCart, hotelCart) }
-    }
+    // starting a workflow
+    client.startWorkflow<BookingWorkflow> { book(carRentalCart, flightCart, hotelCart) }
 
     // closing underlying PulsarClient
     client.close()

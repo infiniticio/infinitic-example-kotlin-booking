@@ -1,6 +1,5 @@
 package infinitic.example.kotlin.booking.tasks.flight
 
-import java.lang.RuntimeException
 import kotlin.random.Random
 
 class FlightBookingServiceFake : FlightBookingService {
