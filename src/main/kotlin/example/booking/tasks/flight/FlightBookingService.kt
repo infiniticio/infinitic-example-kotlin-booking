@@ -1,4 +1,4 @@
-package infinitic.example.kotlin.booking.tasks.flight
+package example.booking.tasks.flight
 
 interface FlightBookingService {
     fun book(cart: FlightBookingCart): FlightBookingResult

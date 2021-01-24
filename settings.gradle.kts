@@ -1,1 +1,1 @@
-rootProject.name = "infinitic-example-kotlin-booking"
+rootProject.name = "example-booking"

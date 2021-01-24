@@ -1,8 +1,8 @@
-package infinitic.example.kotlin.booking.workflows
+package example.booking.workflows
 
-import infinitic.example.kotlin.booking.tasks.carRental.*
-import infinitic.example.kotlin.booking.tasks.flight.*
-import infinitic.example.kotlin.booking.tasks.hotel.*
+import example.booking.tasks.carRental.*
+import example.booking.tasks.flight.*
+import example.booking.tasks.hotel.*
 import io.infinitic.workflows.*
 
 class BookingWorkflowImpl : AbstractWorkflow(), BookingWorkflow {

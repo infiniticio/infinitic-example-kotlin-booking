@@ -1,9 +1,9 @@
-package infinitic.example.kotlin.booking
+package example.booking
 
-import infinitic.example.kotlin.booking.tasks.carRental.CarRentalCart
-import infinitic.example.kotlin.booking.tasks.flight.FlightBookingCart
-import infinitic.example.kotlin.booking.tasks.hotel.HotelBookingCart
-import infinitic.example.kotlin.booking.workflows.BookingWorkflow
+import example.booking.tasks.carRental.CarRentalCart
+import example.booking.tasks.flight.FlightBookingCart
+import example.booking.tasks.hotel.HotelBookingCart
+import example.booking.workflows.BookingWorkflow
 import io.infinitic.pulsar.InfiniticClient
 import kotlinx.coroutines.runBlocking
 import java.util.UUID

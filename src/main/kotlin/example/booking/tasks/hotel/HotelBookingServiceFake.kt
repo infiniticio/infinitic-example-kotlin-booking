@@ -1,11 +1,11 @@
-package infinitic.example.kotlin.booking.tasks.hotel
+package example.booking.tasks.hotel
 
 import kotlin.random.Random
 
 class HotelBookingServiceFake : HotelBookingService {
     override fun book(cart: HotelBookingCart): HotelBookingResult {
         // fake emulation of success/failure
-        println("${this::class.simpleName}  (${cart.cartId}): booking ...")
+        println("${this::class.simpleName}  (${cart.cartId}): booking...")
 
         val r = Random.nextLong(0, 5000)
         Thread.sleep(r)

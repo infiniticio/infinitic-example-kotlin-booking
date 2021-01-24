@@ -1,4 +1,4 @@
-package infinitic.example.kotlin.booking.tasks.carRental
+package example.booking.tasks.carRental
 
 import kotlinx.serialization.Serializable
 

@@ -1,8 +1,8 @@
-package infinitic.example.kotlin.booking.tasks.carRental
+package example.booking.tasks.hotel
 
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class CarRentalCart(
+data class HotelBookingCart(
     val cartId: String
 )

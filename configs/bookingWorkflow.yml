@@ -1,4 +1,4 @@
 workflows:
-  - name: infinitic.example.kotlin.booking.workflows.BookingWorkflow
-    class: infinitic.example.kotlin.booking.workflows.BookingWorkflowImpl
+  - name: example.booking.workflows.BookingWorkflow
+    class: example.booking.workflows.BookingWorkflowImpl
     concurrency: 5

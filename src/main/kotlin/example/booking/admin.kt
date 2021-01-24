@@ -1,4 +1,4 @@
-package infinitic.example.kotlin.booking
+package example.booking
 
 import io.infinitic.pulsar.InfiniticAdmin
 

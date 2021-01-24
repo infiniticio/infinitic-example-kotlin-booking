@@ -1,4 +1,4 @@
-package infinitic.example.kotlin.booking.tasks.carRental
+package example.booking.tasks.carRental
 
 interface CarRentalService {
     fun book(cart: CarRentalCart): CarRentalResult

@@ -1,9 +1,9 @@
-package infinitic.example.kotlin.booking.tasks.hotel
+package example.booking.tasks.flight
 
 import kotlinx.serialization.Serializable
 
 @Serializable
-enum class HotelBookingResult {
+enum class FlightBookingResult {
     SUCCESS,
     FAILURE
 }
