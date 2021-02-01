@@ -5,7 +5,7 @@ import example.booking.tasks.flight.FlightBookingCart
 import example.booking.tasks.hotel.HotelBookingCart
 import io.infinitic.workflows.Workflow
 
-interface BookingWorkflow : Workflow {
+interface BookingWorkflow {
     fun book(
         carRentalCart: CarRentalCart,
         flightCart: FlightBookingCart,
