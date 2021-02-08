@@ -8,7 +8,7 @@ class FlightBookingServiceFake : FlightBookingService {
         println("${this::class.simpleName} (${cart.cartId}): booking...")
 
         val r = Random.nextLong(0, 5000)
-        Thread.sleep(r)
+//        Thread.sleep(r)
 
         return when {
             r >= 4000 -> {
