@@ -7,5 +7,5 @@ fun main(args: Array<String>) {
         0 -> "configs/all.yml"
         else -> args[0]
     }
-    InfiniticWorker.fromFile(file, "configs/infinitic.yml").start()
+    InfiniticWorker.fromConfigFile(file, "configs/infinitic.yml").start()
 }
