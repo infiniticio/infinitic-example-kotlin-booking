@@ -7,6 +7,7 @@ plugins {
 }
 
 repositories {
+    mavenLocal()
     mavenCentral()
     jcenter()
 }
@@ -19,8 +20,8 @@ dependencies {
     implementation("org.apache.avro:avro") { version { strictly("1.9.+") } }
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2")
 
-    implementation("io.infinitic:infinitic-pulsar:0.2.0")
-    implementation("io.infinitic:infinitic-client:0.2.0")
+    implementation("io.infinitic:infinitic-pulsar:0.2.1-SNAPSHOT")
+    implementation("io.infinitic:infinitic-client:0.2.1-SNAPSHOT")
 }
 
 application {
