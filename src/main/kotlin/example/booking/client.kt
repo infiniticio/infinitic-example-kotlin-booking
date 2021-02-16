@@ -2,21 +2,13 @@ package example.booking
 
 import example.booking.tasks.carRental.CarRentalCart
 import example.booking.tasks.flight.FlightBookingCart
-import example.booking.tasks.flight.FlightBookingService
 import example.booking.tasks.hotel.HotelBookingCart
 import example.booking.workflows.BookingResult
 import example.booking.workflows.BookingWorkflow
-import io.infinitic.common.workers.singleThreadedContext
 import io.infinitic.pulsar.InfiniticClient
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.withContext
 import java.util.UUID
 
-fun main() = runBlocking {
+fun main() {
     // instantiate Infinitic client based on infinitic.yml config file
     val client = InfiniticClient.fromConfigFile("configs/infinitic.yml")
 
@@ -29,7 +21,7 @@ fun main() = runBlocking {
     val bookingWorkflow = client.workflow<BookingWorkflow>()
 
     // dispatch a workflow
-     client.async(bookingWorkflow) { book(carRentalCart, flightCart, hotelCart) }
+    client.async(bookingWorkflow) { book(carRentalCart, flightCart, hotelCart) }
 
     // dispatch a workflow and get result
     val result: BookingResult = bookingWorkflow.book(carRentalCart, flightCart, hotelCart)

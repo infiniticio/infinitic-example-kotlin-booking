@@ -13,14 +13,11 @@ repositories {
 
 dependencies {
     implementation("org.slf4j:slf4j-simple:1.7.+")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2")
-
     // https://github.com/apache/pulsar/issues/9045
     implementation("org.apache.avro:avro") { version { strictly("1.9.+") } }
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2")
 
-    implementation("io.infinitic:infinitic-pulsar:0.2.0")
-    implementation("io.infinitic:infinitic-client:0.2.0")
+    implementation("io.infinitic:infinitic-pulsar:0.2.1")
+    implementation("io.infinitic:infinitic-client:0.2.1")
 }
 
 application {
