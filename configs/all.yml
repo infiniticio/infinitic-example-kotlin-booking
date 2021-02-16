@@ -10,15 +10,15 @@ monitoring:
 tasks:
   - name: example.booking.tasks.carRental.CarRentalService
     class: example.booking.tasks.carRental.CarRentalServiceFake
-    concurrency: 5
+    concurrency: 10
   - name: example.booking.tasks.flight.FlightBookingService
     class: example.booking.tasks.flight.FlightBookingServiceFake
-    concurrency: 5
+    concurrency: 10
   - name: example.booking.tasks.hotel.HotelBookingService
     class: example.booking.tasks.hotel.HotelBookingServiceFake
-    concurrency: 5
+    concurrency: 10
 
 workflows:
   - name: example.booking.workflows.BookingWorkflow
     class: example.booking.workflows.BookingWorkflowImpl
-    concurrency: 5
+    concurrency: 10

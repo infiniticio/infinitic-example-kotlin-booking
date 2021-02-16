@@ -1,4 +1,4 @@
 workflows:
   - name: example.booking.workflows.BookingWorkflow
     class: example.booking.workflows.BookingWorkflowImpl
-    concurrency: 5
+    concurrency: 10

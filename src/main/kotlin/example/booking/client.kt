@@ -21,7 +21,7 @@ fun main() {
     val bookingWorkflow = client.workflow<BookingWorkflow>()
 
     // dispatch a workflow
-     client.async(bookingWorkflow) { book(carRentalCart, flightCart, hotelCart) }
+    client.async(bookingWorkflow) { book(carRentalCart, flightCart, hotelCart) }
 
     // dispatch a workflow and get result
     val result: BookingResult = bookingWorkflow.book(carRentalCart, flightCart, hotelCart)
@@ -33,6 +33,3 @@ fun main() {
 }
 
 fun getId() = UUID.randomUUID().toString()
-
-
-
