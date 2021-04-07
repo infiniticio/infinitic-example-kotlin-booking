@@ -6,9 +6,9 @@ import example.booking.tasks.hotel.*
 import io.infinitic.workflows.*
 
 class BookingWorkflowImpl : Workflow(), BookingWorkflow {
-    private val carRentalService = task<CarRentalService>()
-    private val flightService = task<FlightBookingService>()
-    private val hotelService = task<HotelBookingService>()
+    private val carRentalService = newTask<CarRentalService>()
+    private val flightService = newTask<FlightBookingService>()
+    private val hotelService = newTask<HotelBookingService>()
 
     override fun book(
         carRentalCart: CarRentalCart,
@@ -34,12 +34,12 @@ class BookingWorkflowImpl : Workflow(), BookingWorkflow {
             if (flightResult == FlightBookingResult.SUCCESS) { flightService.cancel(flightCart) }
             if (hotelResult == HotelBookingResult.SUCCESS) { hotelService.cancel(hotelCart) }
 
-//            inline { println("${this::class.simpleName}: book canceled") }
+            inline { println("${this::class.simpleName}: book canceled") }
             return BookingResult.FAILURE
         }
 
         // everything went fine
-//        inline { println("${this::class.simpleName}: book succeeded") }
+        inline { println("${this::class.simpleName}: book succeeded") }
         return BookingResult.SUCCESS
     }
 }

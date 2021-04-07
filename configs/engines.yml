@@ -1,3 +1,6 @@
+tagEngine:
+  consumers: 10
+
 taskEngine:
   consumers: 10
 
