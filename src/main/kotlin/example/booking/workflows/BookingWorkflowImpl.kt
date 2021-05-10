@@ -27,6 +27,7 @@ class BookingWorkflowImpl : Workflow(), BookingWorkflow {
 
         // if at least one of the booking is failed than cancel all successful bookings
         if (carRentalResult == CarRentalResult.FAILURE ||
+
             flightResult == FlightBookingResult.FAILURE ||
             hotelResult == HotelBookingResult.FAILURE
         ) {
