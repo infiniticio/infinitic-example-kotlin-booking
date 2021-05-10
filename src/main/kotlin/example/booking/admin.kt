@@ -1,10 +1,13 @@
 package example.booking
 
-import io.infinitic.pulsar.InfiniticAdmin
+import io.infinitic.pulsar.PulsarInfiniticAdmin
 
 fun main() {
-    val admin = InfiniticAdmin.fromConfigFile("configs/infinitic.yml")
+    val admin = PulsarInfiniticAdmin.fromConfigFile("configs/infinitic.yml")
 
     admin.setupPulsar()
+
+    admin.printTopicStats()
+
     admin.close()
 }

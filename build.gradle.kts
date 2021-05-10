@@ -7,18 +7,17 @@ plugins {
 }
 
 repositories {
+    mavenLocal()
     mavenCentral()
 }
 
 dependencies {
     implementation("org.slf4j:slf4j-simple:1.7.+")
-
-    implementation("io.infinitic:infinitic-pulsar:0.5.0")
-    implementation("io.infinitic:infinitic-client:0.5.0")
+    implementation("org.apache.avro:avro") { version { strictly("1.9.+") } }
+    implementation("io.infinitic:infinitic-pulsar:0.6.1")
 }
 
 application {
-    // Define the main class for the application.
     mainClassName = "example.booking.WorkerKt"
 }
 

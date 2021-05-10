@@ -1,15 +1,3 @@
-tagEngine:
-  consumers: 10
-
-taskEngine:
-  consumers: 10
-
-workflowEngine:
-  consumers: 10
-
-monitoring:
-  consumers: 10
-
 tasks:
   - name: example.booking.tasks.carRental.CarRentalService
     class: example.booking.tasks.carRental.CarRentalServiceFake
