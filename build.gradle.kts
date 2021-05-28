@@ -1,20 +1,20 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    id("org.jetbrains.kotlin.jvm") version "1.4.30"
+    id("org.jetbrains.kotlin.jvm") version "1.5.10"
 
     application
 }
 
 repositories {
-    mavenLocal()
     mavenCentral()
 }
 
 dependencies {
     implementation("org.slf4j:slf4j-simple:1.7.+")
     implementation("org.apache.avro:avro") { version { strictly("1.9.+") } }
-    implementation("io.infinitic:infinitic-pulsar:0.6.1")
+
+    implementation("io.infinitic:infinitic-pulsar:0.6.+")
 }
 
 application {
