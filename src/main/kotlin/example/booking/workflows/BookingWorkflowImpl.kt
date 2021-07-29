@@ -35,12 +35,12 @@ class BookingWorkflowImpl : Workflow(), BookingWorkflow {
             if (flightResult == FlightBookingResult.SUCCESS) { flightService.cancel(flightCart) }
             if (hotelResult == HotelBookingResult.SUCCESS) { hotelService.cancel(hotelCart) }
 
-            inline { println("${this::class.simpleName}: book canceled") }
+            inline { println("${this::class.simpleName}: book canceled  ${context.id}") }
             return BookingResult.FAILURE
         }
 
         // everything went fine
-        inline { println("${this::class.simpleName}: book succeeded") }
+        inline { println("${this::class.simpleName}: book succeeded ${context.id}") }
         return BookingResult.SUCCESS
     }
 }
