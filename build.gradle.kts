@@ -7,15 +7,15 @@ plugins {
 }
 
 repositories {
-    mavenLocal()
     mavenCentral()
 }
 
 dependencies {
     implementation("org.slf4j:slf4j-simple:1.7.+")
+    // to be removed with Pulsar 1.8 https://github.com/apache/pulsar/issues/9045
     implementation("org.apache.avro:avro") { version { strictly("1.9.+") } }
 
-    implementation("io.infinitic:infinitic-pulsar:0.6.+")
+    implementation("io.infinitic:infinitic-pulsar:0.7.1")
 }
 
 application {

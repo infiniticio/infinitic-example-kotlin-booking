@@ -7,7 +7,5 @@ fun main() {
 
     admin.setupPulsar()
 
-    admin.printTopicStats()
-
     admin.close()
 }
