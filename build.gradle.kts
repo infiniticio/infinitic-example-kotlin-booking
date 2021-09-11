@@ -7,6 +7,7 @@ plugins {
 }
 
 repositories {
+    mavenLocal()
     mavenCentral()
 }
 
@@ -16,7 +17,7 @@ dependencies {
     // add a logger
     implementation("org.slf4j:slf4j-simple:1.7.+")
     // infinitic lib
-    implementation("io.infinitic:infinitic-pulsar:0.7.1")
+    implementation("io.infinitic:infinitic-factory:0.7.4")
 }
 
 application {
@@ -25,12 +26,6 @@ application {
 
 tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = JavaVersion.VERSION_1_8.toString()
-}
-
-task("setupPulsar", JavaExec::class) {
-    group = "infinitic"
-    main = "example.booking.AdminKt"
-    classpath = sourceSets["main"].runtimeClasspath
 }
 
 task("startWorkflow", JavaExec::class) {

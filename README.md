@@ -8,7 +8,6 @@ This repository is described in the Infinitic documentation: https://docs.infini
 
 ## Before running
 - If needed, update credentials in configs/infinitic.yml
-- run `gradle setupPulsar` (only once) to setup your Pulsar namespace
 
 ## Running services separately
 - run bookingWorkflow service: `gradle run --args=configs/bookingWorkflow.yml`

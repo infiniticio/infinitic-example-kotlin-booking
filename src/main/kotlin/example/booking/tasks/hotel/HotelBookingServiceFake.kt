@@ -6,7 +6,8 @@ import kotlin.math.pow
 import kotlin.random.Random
 
 class HotelBookingServiceFake: Task(), HotelBookingService {
-    override fun book(cart: HotelBookingCart): HotelBookingResult {
+
+     override fun book(cart: HotelBookingCart): HotelBookingResult {
         // fake emulation of success/failure
         println("${this::class.simpleName}  (${cart.cartId}): booking...")
 
@@ -37,6 +38,7 @@ class HotelBookingServiceFake: Task(), HotelBookingService {
     // Exponential backoff retry strategy up to 6 attempts
     override fun getDurationBeforeRetry(e: Exception): Duration? {
         val n = context.retryIndex
+
         return when {
             n < 12 -> Duration.ofSeconds((5 * Math.random() * 2.0.pow(n)).toLong())
             else -> null

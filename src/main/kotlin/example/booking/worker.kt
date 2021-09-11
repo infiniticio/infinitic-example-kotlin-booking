@@ -1,11 +1,14 @@
 package example.booking
 
-import io.infinitic.pulsar.PulsarInfiniticWorker
+import io.infinitic.factory.InfiniticWorkerFactory
 
 fun main(args: Array<String>) {
     val file = when (args.size) {
         0 -> "configs/all.yml"
         else -> args[0]
     }
-    PulsarInfiniticWorker. fromConfigFile(file, "configs/infinitic.yml").start()
+
+    InfiniticWorkerFactory.fromConfigFile(file, "configs/infinitic.yml").use {
+        it.start()
+    }
 }
