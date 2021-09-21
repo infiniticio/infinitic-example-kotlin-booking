@@ -6,9 +6,9 @@ import example.booking.tasks.hotel.*
 import io.infinitic.workflows.*
 
 class BookingWorkflowImpl : Workflow(), BookingWorkflow {
-    private val carRentalService = newTask<CarRentalService>()
-    private val flightService = newTask<FlightBookingService>()
-    private val hotelService = newTask<HotelBookingService>()
+    private val carRentalService = taskStub(CarRentalService::class.java)
+    private val flightService = taskStub(FlightBookingService::class.java)
+    private val hotelService = taskStub(HotelBookingService::class.java)
 
     override fun book(
         carRentalCart: CarRentalCart,
@@ -16,9 +16,9 @@ class BookingWorkflowImpl : Workflow(), BookingWorkflow {
         hotelCart: HotelBookingCart
     ): BookingResult {
         // parallel bookings using car rental, flight and hotel services
-        val carRental = async(carRentalService) { book(carRentalCart) }
-        val flight = async(flightService) { book(flightCart) }
-        val hotel = async(hotelService) { book(hotelCart) }
+        val carRental = dispatch(carRentalService::book)(carRentalCart)
+        val flight = dispatch(flightService::book)(flightCart)
+        val hotel = dispatch(hotelService::book)(hotelCart)
 
         // wait and assign results
         val carRentalResult = carRental.await() // wait and assign result for CarRentalService::book

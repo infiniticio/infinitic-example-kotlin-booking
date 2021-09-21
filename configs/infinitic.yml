@@ -4,6 +4,8 @@ pulsar:
   webServiceUrl: http://localhost:8080
   tenant: infinitic
   namespace: dev
+#  authentication:
+#    token:
 
 # Workers settings
 stateStorage: redis
