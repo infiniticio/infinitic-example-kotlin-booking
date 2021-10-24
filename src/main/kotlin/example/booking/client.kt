@@ -11,7 +11,7 @@ fun main() {
         val client = it
 
         // create a stub for BookingWorkflow
-        val bookingWorkflow = client.workflowStub(BookingWorkflow::class.java)
+        val bookingWorkflow = client.newWorkflow(BookingWorkflow::class.java)
 
         repeat(100) {
             // faking some carts
@@ -19,7 +19,7 @@ fun main() {
             val flightCart = FlightBookingCart()
             val hotelCart = HotelBookingCart()
             // dispatch a workflow
-            val deferred = client.dispatch(bookingWorkflow::book)(carRentalCart, flightCart, hotelCart)
+            val deferred = client.dispatch(bookingWorkflow::book, carRentalCart, flightCart, hotelCart)
 
             println("workflows ${BookingWorkflow::class} ${deferred.id} dispatched!")
         }

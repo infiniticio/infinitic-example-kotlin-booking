@@ -18,11 +18,10 @@ class FlightBookingServiceFake: Task(), FlightBookingService {
                 println("${this::class.simpleName} (${cart.cartId}): failed")
                 FlightBookingResult.FAILURE
             }
-//             // Uncomment the lines below to emulate exception
-//            r >= 3000 -> {
-//                println("${this::class.simpleName} (${cart.cartId}): exception!")
-//                throw RuntimeException("failing request")
-//            }
+            r >= 3000 -> {
+                println("${this::class.simpleName} (${cart.cartId}): exception!")
+                throw RuntimeException("failing request")
+            }
             else -> {
                 println("${this::class.simpleName} (${cart.cartId}): succeeded")
                 FlightBookingResult.SUCCESS

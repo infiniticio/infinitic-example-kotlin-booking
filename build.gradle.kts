@@ -7,7 +7,6 @@ plugins {
 }
 
 repositories {
-    mavenLocal()
     mavenCentral()
 }
 
@@ -17,7 +16,7 @@ dependencies {
     // add a logger
     implementation("org.slf4j:slf4j-simple:1.7.+")
     // infinitic lib
-    implementation("io.infinitic:infinitic-factory:0.8.0-SNAPSHOT")
+    implementation("io.infinitic:infinitic-factory:0.8.0")
 }
 
 application {
