@@ -6,3 +6,5 @@ build
 
 # Ignore Logs
 *.log
+
+.idea

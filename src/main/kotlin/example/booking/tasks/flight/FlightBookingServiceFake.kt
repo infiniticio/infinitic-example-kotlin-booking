@@ -5,7 +5,7 @@ import java.time.Duration
 import kotlin.math.pow
 import kotlin.random.Random
 
-class FlightBookingServiceFake: Task(), FlightBookingService {
+class FlightBookingServiceFake : Task(), FlightBookingService {
 
     override fun book(cart: FlightBookingCart): FlightBookingResult {
         println("${this::class.simpleName} (${cart.cartId}): booking...")
@@ -19,7 +19,7 @@ class FlightBookingServiceFake: Task(), FlightBookingService {
                 FlightBookingResult.FAILURE
             }
             r >= 3000 -> {
-                println("${this::class.simpleName} (${cart.cartId}): exception!")
+                println("${this::class.simpleName} (${cart.cartId}): exception")
                 throw RuntimeException("failing request")
             }
             else -> {

@@ -18,6 +18,8 @@ class BookingWorkflowImpl : Workflow(), BookingWorkflow {
         flightCart: FlightBookingCart,
         hotelCart: HotelBookingCart
     ): BookingResult {
+        inline { println("${this::class.simpleName}: started    ${context.id}") }
+
         // dispatch parallel bookings using car, flight and hotel services
         val deferredCarRental = dispatch(carRentalService::book, carRentalCart)
         val deferredFlightBooking = dispatch(flightBookingService::book, flightCart)
@@ -40,13 +42,13 @@ class BookingWorkflowImpl : Workflow(), BookingWorkflow {
             if (hotelResult == HotelBookingResult.SUCCESS) { hotelBookingService.cancel(hotelCart) }
 
             // printing is done through an inline task
-            inline { println("${this::class.simpleName}: book canceled  ${context.id}") }
+            inline { println("${this::class.simpleName}: terminated ${context.id} (canceled)") }
 
             return BookingResult.FAILURE
         }
 
         // printing is done through an inline task
-        inline { println("${this::class.simpleName}: book succeeded ${context.id}") }
+        inline { println("${this::class.simpleName}: terminated ${context.id} (completed)") }
 
         return BookingResult.SUCCESS
     }

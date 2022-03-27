@@ -7,10 +7,10 @@ import kotlin.random.Random
 
 class CarRentalServiceFake : Task(), CarRentalService {
 
-     override fun book(cart: CarRentalCart): CarRentalResult {
+    override fun book(cart: CarRentalCart): CarRentalResult {
         println("${this::class.simpleName}     (${cart.cartId}): booking...")
 
-         // fake emulation of success/failure
+        // fake emulation of success/failure
         val r = Random.nextLong(0, 5000)
 
         return when {
