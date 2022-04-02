@@ -7,7 +7,7 @@ import example.booking.workflows.BookingWorkflow
 import io.infinitic.factory.InfiniticClientFactory
 
 fun main() {
-    InfiniticClientFactory.fromConfigFile("configs/infinitic.yml", "configs/all.yml").use { client ->
+    InfiniticClientFactory.fromConfigResource("/configs/infinitic.yml", "/configs/all.yml").use { client ->
         // create a stub for BookingWorkflow
         val bookingWorkflow = client.newWorkflow(BookingWorkflow::class.java)
 
@@ -18,7 +18,7 @@ fun main() {
             val hotelCart = HotelBookingCart()
             // dispatch a workflow
             client.dispatchAsync(bookingWorkflow::book, carRentalCart, flightCart, hotelCart)
-                .thenApply { deferred -> println("Workflows ${BookingWorkflow::class} ${deferred.id} ($it) dispatched!") }
+                .thenApply { deferred -> println("Workflows ${deferred.id} ($it) dispatched!") }
                 .exceptionally { error -> System.err.println("Failed to dispatch ($it): $error") }
         }
     }

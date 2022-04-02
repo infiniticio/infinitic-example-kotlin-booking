@@ -1,4 +1,3 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     // Apply the Kotlin JVM plugin to add support for Kotlin.
@@ -16,19 +15,15 @@ repositories {
 
 dependencies {
     // add a logger
-    implementation("org.slf4j:slf4j-simple:1.7.+")
+    implementation("org.slf4j:slf4j-simple:1.7.36")
     // infinitic framework
-    implementation("io.infinitic:infinitic-factory:0.9.0")
+    implementation("io.infinitic:infinitic-factory:0.9.3")
     // infinitic dashboard
-    implementation("io.infinitic:infinitic-dashboard:0.9.0")
+    implementation("io.infinitic:infinitic-dashboard:0.9.3")
 }
 
 application {
     mainClassName = "example.booking.WorkerKt"
-}
-
-tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = JavaVersion.VERSION_1_8.toString()
 }
 
 task("dispatch", JavaExec::class) {
@@ -41,5 +36,4 @@ task("dashboard", JavaExec::class) {
     group = "infinitic"
     main = "example.booking.DashboardKt"
     classpath = sourceSets["main"].runtimeClasspath
-    setArgsString("infinitic.yml")
 }
