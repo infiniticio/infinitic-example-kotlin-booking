@@ -9,7 +9,7 @@ import io.infinitic.factory.InfiniticClientFactory
 fun main() {
     InfiniticClientFactory.fromConfigResource("/configs/infinitic.yml", "/configs/all.yml").use { client ->
         // create a stub for BookingWorkflow
-        val bookingWorkflow = client.newWorkflow(BookingWorkflow::class.java)
+        val bookingWorkflow = client.newWorkflow(BookingWorkflow::class.java, tags = setOf("booking"))
 
         repeat(10) {
             // fake carts
