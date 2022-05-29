@@ -17,9 +17,9 @@ dependencies {
     // add a logger
     implementation("org.slf4j:slf4j-simple:1.7.36")
     // infinitic framework
-    implementation("io.infinitic:infinitic-factory:0.9.5")
+    implementation("io.infinitic:infinitic-factory:0.9.8")
     // infinitic dashboard
-    implementation("io.infinitic:infinitic-dashboard:0.9.5")
+    implementation("io.infinitic:infinitic-dashboard:0.9.8")
 }
 
 application {
