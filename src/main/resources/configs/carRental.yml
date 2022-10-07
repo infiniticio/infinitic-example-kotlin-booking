@@ -1,4 +1,4 @@
 tasks:
-  - name: example.booking.tasks.carRental.CarRentalService
+  - name: CarRental
     class: example.booking.tasks.carRental.CarRentalServiceFake
     concurrency: 10

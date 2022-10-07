@@ -1,15 +1,15 @@
 tasks:
-  - name: example.booking.tasks.carRental.CarRentalService
+  - name: CarRental
     class: example.booking.tasks.carRental.CarRentalServiceFake
     concurrency: 10
-  - name: example.booking.tasks.flight.FlightBookingService
+  - name: FlightBooking
     class: example.booking.tasks.flight.FlightBookingServiceFake
     concurrency: 10
-  - name: example.booking.tasks.hotel.HotelBookingService
+  - name: HotelBooking
     class: example.booking.tasks.hotel.HotelBookingServiceFake
     concurrency: 10
 
 workflows:
-  - name: example.booking.workflows.BookingWorkflow
+  - name: BookingWorkflow
     class: example.booking.workflows.BookingWorkflowImpl
     concurrency: 10

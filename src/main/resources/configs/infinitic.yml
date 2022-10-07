@@ -1,23 +1,22 @@
-# Common settings
+# Pulsar settings
 pulsar:
   tenant: infinitic
   namespace: dev
-#  brokerServiceUrl:
-#  webServiceUrl:
-#  authentication:
-#    issuerUrl:
-#    privateKey:
-#    audience:
+  brokerServiceUrl: pulsar+ssl://dev.infinitic.snio.cloud:6651
+  webServiceUrl: https://dev.infinitic.snio.cloud
+  authentication:
+    issuerUrl: https://auth.streamnative.cloud
+    privateKey: file:///Users/gilles/.sn/infinitic-admin.json
+    audience: urn:sn:pulsar:infinitic:test
 
-# Workers settings
-stateStorage: redis
-
-redis:
-  host: localhost
-  port: 6379
-  user:
-  password:
-  database: 0
+# Storage settings
+storage:
+  redis:
+    host: localhost
+    port: 6379
+    user:
+    password:
+    database: 0
 
 # Dashboard Settings
 port: 9080

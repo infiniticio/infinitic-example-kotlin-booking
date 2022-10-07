@@ -1,5 +1,5 @@
 tasks:
-  - name: example.booking.tasks.hotel.HotelBookingService
+  - name: HotelBooking
     class: example.booking.tasks.hotel.HotelBookingServiceFake
     concurrency: 10
 

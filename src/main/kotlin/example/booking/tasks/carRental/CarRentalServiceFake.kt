@@ -8,29 +8,29 @@ import kotlin.random.Random
 class CarRentalServiceFake : Task(), CarRentalService {
 
     override fun book(cart: CarRentalCart): CarRentalResult {
-        println("${this::class.simpleName}     (${cart.cartId}): booking...")
+        printl("start car rental ...")
 
         // fake emulation of success/failure
         val r = Random.nextLong(0, 5000)
 
         return when {
             r >= 4000 -> {
-                println("${this::class.simpleName}     (${cart.cartId}): failed")
+                printl("car rental failed")
                 CarRentalResult.FAILURE
             }
             r >= 3000 -> {
-                println("${this::class.simpleName}     (${cart.cartId}): exception!")
+                printl("car rental threw exception!")
                 throw RuntimeException("failing request")
             }
             else -> {
-                println("${this::class.simpleName}     (${cart.cartId}): succeeded")
+                printl("car rental succeeded")
                 CarRentalResult.SUCCESS
             }
         }
     }
 
     override fun cancel(cart: CarRentalCart) {
-        println("${this::class.simpleName}     (${cart.cartId}): canceled")
+        printl("car rental canceled!")
     }
 
     // Exponential backoff retry strategy up to 12 attempts
@@ -41,5 +41,9 @@ class CarRentalServiceFake : Task(), CarRentalService {
             n < 12 -> Duration.ofSeconds((5 * Math.random() * 2.0.pow(n)).toLong())
             else -> null
         }
+    }
+
+    private fun printl(msg: String) {
+        println(context.workflowId + " - " + this.javaClass.simpleName + " - " + msg)
     }
 }

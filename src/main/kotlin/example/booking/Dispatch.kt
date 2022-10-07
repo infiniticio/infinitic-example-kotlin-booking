@@ -1,13 +1,13 @@
-package example.booking
+package example.booking // ktlint-disable filename
 
 import example.booking.tasks.carRental.CarRentalCart
 import example.booking.tasks.flight.FlightBookingCart
 import example.booking.tasks.hotel.HotelBookingCart
 import example.booking.workflows.BookingWorkflow
-import io.infinitic.factory.InfiniticClientFactory
+import io.infinitic.clients.InfiniticClient
 
 fun main() {
-    InfiniticClientFactory.fromConfigResource("/configs/infinitic.yml", "/configs/all.yml").use { client ->
+    InfiniticClient.fromConfigResource("/configs/infinitic.yml", "/configs/all.yml").use { client ->
         // create a stub for BookingWorkflow
         val bookingWorkflow = client.newWorkflow(BookingWorkflow::class.java, tags = setOf("booking"))
 
