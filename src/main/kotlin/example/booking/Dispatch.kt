@@ -1,8 +1,8 @@
 package example.booking // ktlint-disable filename
 
-import example.booking.tasks.carRental.CarRentalCart
-import example.booking.tasks.flight.FlightBookingCart
-import example.booking.tasks.hotel.HotelBookingCart
+import example.booking.services.carRental.CarRentalCart
+import example.booking.services.flight.FlightBookingCart
+import example.booking.services.hotel.HotelBookingCart
 import example.booking.workflows.BookingWorkflow
 import io.infinitic.clients.InfiniticClient
 

@@ -1,32 +1,36 @@
 package example.booking.workflows
 
-import example.booking.tasks.carRental.CarRentalCart
-import example.booking.tasks.carRental.CarRentalResult
-import example.booking.tasks.carRental.CarRentalService
-import example.booking.tasks.flight.FlightBookingCart
-import example.booking.tasks.flight.FlightBookingResult
-import example.booking.tasks.flight.FlightBookingService
-import example.booking.tasks.hotel.HotelBookingCart
-import example.booking.tasks.hotel.HotelBookingResult
-import example.booking.tasks.hotel.HotelBookingService
+import example.booking.services.carRental.CarRentalCart
+import example.booking.services.carRental.CarRentalResult
+import example.booking.services.carRental.CarRentalService
+import example.booking.services.flight.FlightBookingCart
+import example.booking.services.flight.FlightBookingResult
+import example.booking.services.flight.FlightBookingService
+import example.booking.services.hotel.HotelBookingCart
+import example.booking.services.hotel.HotelBookingResult
+import example.booking.services.hotel.HotelBookingService
+import io.infinitic.tasks.Task
 import io.infinitic.workflows.Workflow
+import java.text.SimpleDateFormat
+import java.util.Date
 
+@Suppress("unused")
 class BookingWorkflowImpl : Workflow(), BookingWorkflow {
     // create stub for CarRentalService
-    private val carRentalService = newTask(CarRentalService::class.java)
+    private val carRentalService = newService(CarRentalService::class.java)
 
     // create stub for FlightBookingService
-    private val flightBookingService = newTask(FlightBookingService::class.java)
+    private val flightBookingService = newService(FlightBookingService::class.java)
 
     // create stub for HotelBookingService
-    private val hotelBookingService = newTask(HotelBookingService::class.java)
+    private val hotelBookingService = newService(HotelBookingService::class.java)
 
     override fun book(
         carRentalCart: CarRentalCart,
         flightCart: FlightBookingCart,
         hotelCart: HotelBookingCart
     ): BookingResult {
-        printl("booking started")
+        log("booking started")
 
         // dispatch parallel bookings using car, flight and hotel services
         val deferredCarRental = dispatch(carRentalService::book, carRentalCart)
@@ -50,18 +54,18 @@ class BookingWorkflowImpl : Workflow(), BookingWorkflow {
             if (hotelResult == HotelBookingResult.SUCCESS) { hotelBookingService.cancel(hotelCart) }
 
             // printing is done through an inline task
-            printl("booking failed")
+            log("booking failed")
 
             return BookingResult.FAILURE
         }
 
         // printing is done through an inline task
-        printl("booking succeeded")
+        log("booking succeeded")
 
         return BookingResult.SUCCESS
     }
 
-    private fun printl(msg: String) {
-        inline { println(context.id + " - " + this.javaClass.simpleName + " - " + msg) }
+    private fun log(msg: String) = inline {
+        println(SimpleDateFormat("hh:mm:ss.SSS").format(Date()) + " - " + Task.workflowId + " - " + Task.workflowName + " - " + msg)
     }
 }

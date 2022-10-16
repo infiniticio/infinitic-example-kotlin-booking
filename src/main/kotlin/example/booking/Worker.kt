@@ -8,7 +8,7 @@ fun main(args: Array<String>) {
         else -> args[0]
     }
 
-    InfiniticWorker.fromConfigResource(file, "/configs/infinitic.yml").use {
-        it.start()
+    InfiniticWorker.fromConfigResource(file, "/configs/infinitic.yml").use { worker ->
+        worker.start()
     }
 }

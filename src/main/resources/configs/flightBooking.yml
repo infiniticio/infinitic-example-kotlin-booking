@@ -1,4 +1,4 @@
-tasks:
+services:
   - name: FlightBooking
     class: example.booking.tasks.flight.FlightBookingServiceFake
     concurrency: 10

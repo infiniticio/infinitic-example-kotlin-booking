@@ -1,4 +1,4 @@
-package example.booking.tasks.hotel
+package example.booking.services.hotel
 
 import io.infinitic.annotations.Name
 
