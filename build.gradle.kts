@@ -1,23 +1,21 @@
 
 plugins {
     // Apply the Kotlin JVM plugin to add support for Kotlin.
-    id("org.jetbrains.kotlin.jvm") version "1.6.10"
+    kotlin("jvm") version "1.9.20"
     // Apply the application plugin
     application
 }
 
 repositories {
+    //mavenLocal()
     mavenCentral()
-    mavenLocal()
-    // mandatory for the dashboard
-    maven("https://jitpack.io")
 }
 
 dependencies {
     // add a logger
     implementation("org.slf4j:slf4j-simple:2.0.3")
     // Infinitic version
-    version = "0.11.0"
+    version = "0.12.0"
     // infinitic client
     implementation("io.infinitic:infinitic-client:$version")
     // infinitic worker
@@ -27,17 +25,17 @@ dependencies {
 }
 
 application {
-    mainClassName = "example.booking.WorkerKt"
+    mainClass.set("example.booking.WorkerKt")
 }
 
-task("dispatch", JavaExec::class) {
+task<JavaExec>("dispatch") {
     group = "infinitic"
-    main = "example.booking.DispatchKt"
     classpath = sourceSets["main"].runtimeClasspath
+    mainClass.set("example.booking.DispatchKt")
 }
 
-task("dashboard", JavaExec::class) {
+task<JavaExec>("dashboard") {
     group = "infinitic"
-    main = "example.booking.DashboardKt"
     classpath = sourceSets["main"].runtimeClasspath
+    mainClass.set("example.booking.DashboardKt")
 }

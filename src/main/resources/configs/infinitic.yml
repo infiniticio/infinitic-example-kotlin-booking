@@ -2,12 +2,12 @@
 pulsar:
   tenant: infinitic
   namespace: dev
-  brokerServiceUrl: pulsar+ssl://dev.infinitic.snio.cloud:6651
-  webServiceUrl: https://dev.infinitic.snio.cloud
-  authentication:
-    issuerUrl: https://auth.streamnative.cloud
-    privateKey: file:///Users/gilles/.sn/infinitic-admin.json
-    audience: urn:sn:pulsar:infinitic:test
+  # brokerServiceUrl: pulsar+ssl://dev.infinitic.snio.cloud:6651
+  # webServiceUrl: https://dev.infinitic.snio.cloud
+  # authentication:
+    # issuerUrl: https://auth.streamnative.cloud
+    # privateKey: file:///Users/gilles/.sn/infinitic-admin.json
+    # audience: urn:sn:pulsar:infinitic:test
 
 # Storage settings
 storage:
@@ -19,11 +19,11 @@ storage:
   #  password:
   #  database: infinitic
   redis:
-    host: localhost
-    port: 6379
-    user:
-    password:
-    database: 0
+    # host: localhost
+    # port: 6379
+    # user:
+    # password:
+    # database: 0
 
 # Dashboard Settings
 port: 9080
